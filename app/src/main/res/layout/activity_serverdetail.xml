@@ -54,7 +54,7 @@
             android:layout_marginLeft="20dp"
             android:layout_toLeftOf="@+id/sspp"
             android:layout_toRightOf="@+id/btn_back"
-            android:background="@mipmap/search"
+            android:background="@drawable/searchbox"
             android:hint="이름,전화번호"
             android:imeOptions="actionSearch"
             android:inputType="text"

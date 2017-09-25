@@ -1,0 +1,119 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:background="#007AFF" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/btn_back" />
+
+        <LinearLayout
+            android:id="@+id/sspp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_sp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="3dp"
+                android:background="@mipmap/search01"
+                android:gravity="center_vertical" />
+
+            <Button
+                android:id="@+id/btn_sp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@mipmap/search02" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/e_search1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="교회명목사명주소 전화입력"
+            android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/sspp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:background="@mipmap/search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingLeft="25dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#DCDCDC"
+            android:textSize="17dp"
+            android:typeface="sans" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/view1"
+        android:orientation="vertical" >
+
+        <fragment
+            android:id="@+id/mapview"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/list_view_11"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/list_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="#000000"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC" />
+
+            <ListView
+                android:id="@+id/list_cummun"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#dfdede"
+                android:dividerHeight="1dp" >
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

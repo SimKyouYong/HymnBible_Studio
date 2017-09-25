@@ -1,0 +1,320 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:background="#007AFF" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/btn_back" />
+
+        <TextView
+            android:id="@+id/titlename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:textColor="#ffffff"
+            android:textSize="21dp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="무료단체문자"
+            android:textColor="#ffffff"
+            android:textSize="21dp" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/e_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp" />
+
+            <Button
+                android:id="@+id/btn_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomview_11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/bottomview_l"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#007AFF"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/bottomview_l_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/icon_list" />
+
+            <TextView
+                android:id="@+id/font_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="발송내역"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomview_c"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#007AFF"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/bottomview_c_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/icon_excel" />
+
+            <TextView
+                android:id="@+id/font_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="텍스트추가"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomview_r"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#007AFF"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/bottomview_r_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/icon_out" />
+
+            <TextView
+                android:id="@+id/font_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나가기"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/view22"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/bottomview_11"
+        android:layout_below="@+id/view1"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/send_lms"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/lms_send_button"
+            android:padding="10dp"
+            android:text="발송"
+            android:textColor="#ffffff" />
+
+        <LinearLayout
+            android:id="@+id/view2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/lms_main_tap"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/tab1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                            android:background="@drawable/lms_main_tap1"
+                
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="폰 주소록"
+                android:textColor="#ffffff"
+                android:textSize="13dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="#D3D3D3" />
+
+            <Button
+                android:id="@+id/tab2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="서버 주소록" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/count_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view2"
+            android:layout_marginTop="5dp"
+            android:background="#DCDCDC"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/t_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="보내는 사람 : 0 명"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/view3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/count_view"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="150dp" >
+
+                <EditText
+                    android:id="@+id/lms_msg"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="left|top"
+                    android:hint="문자를 입력해주세요." />
+
+                <TextView
+                    android:id="@+id/txt_byte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right|bottom"
+                    android:text="0 Byte" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/phone_number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="번호를 입력해주세요."
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/number_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/icon_sms_add" />
+
+                <Button
+                    android:id="@+id/number_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/icon_sms_del" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/send_lms"
+            android:layout_below="@+id/view3" >
+
+            <ListView
+                android:id="@+id/list_number"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#dfdede"
+                android:dividerHeight="1dp" >
+            </ListView>
+
+            <LinearLayout
+                android:id="@+id/list_noti"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical|left"
+                android:background="#eCeCeC"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txt_notice"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:textSize="17dp"
+                    android:lineSpacingExtra="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center_vertical|left"
+                    android:text="본서비스는 단체문자를 한번에 편하게 이용하실 수 있는 서비스 입니다.\n귀하의 통신요금제를 확인해 주시고 불이익을 당하지 않도록 주의해 주시기 바랍니다."
+                    android:textColor="#808080" />
+            </LinearLayout>
+        </FrameLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

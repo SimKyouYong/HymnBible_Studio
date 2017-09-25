@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp" >
+
+    <CheckBox
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:button="@drawable/checkbox_on_off"
+        android:focusable="false" />
+
+    <TextView
+        android:id="@+id/t_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/t_phone"
+        android:layout_toRightOf="@+id/check"
+        android:text="aaaaa"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/t_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/del"
+        android:text="adsfsa"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/del"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:background="@mipmap/icon_delete_24dp"
+        android:focusable="false" />
+
+</RelativeLayout>

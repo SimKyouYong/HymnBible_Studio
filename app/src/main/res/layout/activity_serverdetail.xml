@@ -1,0 +1,149 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:background="#007AFF" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/btn_back" />
+
+        <LinearLayout
+            android:id="@+id/sspp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_sp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="3dp"
+                android:background="@mipmap/search01"
+                android:gravity="center_vertical" />
+
+            <Button
+                android:id="@+id/btn_sp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@mipmap/search02" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/e_lms"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/sspp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:background="@mipmap/search"
+            android:hint="이름,전화번호"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingLeft="25dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#DCDCDC"
+            android:textSize="17dp"
+            android:typeface="sans" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#007AFF"
+        android:padding="10dp"
+        android:text="완료"
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/btn_ok"
+        android:layout_below="@+id/view1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/count_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view2"
+            android:layout_marginTop="10dp"
+            android:background="#DCDCDC"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/t_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:paddingLeft="10dp"
+                android:text="연락처 선택"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/check_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:button="@drawable/checkbox_on_off"
+                android:focusable="false" />
+
+            <TextView
+                android:id="@+id/t_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="전체선택"
+                android:textColor="#A9A9A9"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#dfdede" />
+
+        <ListView
+            android:id="@+id/list_number"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="#dfdede"
+            android:dividerHeight="1dp" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

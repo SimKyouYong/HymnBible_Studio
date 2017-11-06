@@ -25,15 +25,14 @@
         <uses-library android:name="com.google.android.maps" />
 
         <!--개발-->
-        <!--
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyC8O2eh_Stm3O-TfGW7_wxH1Zhbo8f9Fqw" />
-        -->
-        <!--운영-->
+            android:value="AIzaSyAOgoh3cR7-39wni4C_R8HKo4d0BRtrNE8" />
+        <!--운영
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyD98fokEtY9jjyObtwFetlcxhAzmcovMLc" />
+            -->
 
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
@@ -67,6 +66,11 @@
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name=".ChurchSearch_Detail"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ChurchSearch"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />

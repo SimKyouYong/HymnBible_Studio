@@ -1,22 +1,5 @@
 package co.kr.sky.hymnbible.fun;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -45,7 +28,26 @@ import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import co.kr.sky.AccumThread;
+import co.kr.sky.hymnbible.ChurchSearch;
 import co.kr.sky.hymnbible.ImageViewActivity;
 import co.kr.sky.hymnbible.LMSMainActivity;
 import co.kr.sky.hymnbible.MainActivity;
@@ -366,8 +368,8 @@ public class FunNative  {
 	public void ChurchSearch(String url , Activity ac , WebView vc , String return_fun){
 		MainActivity.myTTS.stop();
 		Log.e("SKY" , "-ChurchSearch-- :: ");
-		//Intent intent = new Intent(ac , ChurchSearch.class);
-		//ac.startActivity(intent);
+		Intent intent = new Intent(ac , ChurchSearch.class);
+		ac.startActivity(intent);
 	}
 
 

@@ -412,8 +412,9 @@ public class MainActivity extends Activity{
 		}
 		switch (requestCode) {
 		case 1:
-			if (requestCode == INPUT_FILE_REQUEST_CODE && resultCode == RESULT_OK) {
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			if (requestCode == INPUT_FILE_REQUEST_CODE) {
+                Log.e("SKY" , "INPUT_FILE_REQUEST_CODE");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 					if (mFilePathCallback == null) {
 						super.onActivityResult(requestCode, resultCode, data);
 						return;
@@ -889,11 +890,9 @@ public class MainActivity extends Activity{
                                          ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
             Log.e("SKY", "5.0+");
             System.out.println("WebViewActivity A>5, OS Version : " + Build.VERSION.SDK_INT + "\t onSFC(WV,VCUB,FCP), n=3");
-            /*
             if (mFilePathCallback != null) {
                 mFilePathCallback.onReceiveValue(null);
             }
-            */
             mFilePathCallback = filePathCallback;
             imageChooser();
             return true;

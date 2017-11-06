@@ -1,10 +1,11 @@
 package co.kr.sky.hymnbible.fun;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import co.kr.sky.hymnbible.obj.MyPhoneListObj2;
 
 
@@ -58,6 +59,7 @@ public class CommonUtil {
 	public String BIBLE25_URL2;
 	public String BIBLE25_URL3;
 	public String BIBLE25_URL4;
+    public String VERSION_CHECK;
 
 	static {
 		_instance = new CommonUtil();
@@ -87,6 +89,7 @@ public class CommonUtil {
 			_instance.BIBLE25_URL2 = 	   		"http://ch2ho.bible25.com/m/bbs/board2.php?bo_table=bible&t=tab5&key=NKRV&key2=&key3=&";			//BIBLE25 url
 			_instance.BIBLE25_URL3 = 	   		"http://ch2ho.bible25.com/m/bbs/board2.php?bo_table=bible&t=tab3&key=NKRV&key2=&key3=&";			//BIBLE25 url
 			_instance.BIBLE25_URL4 = 	   		"http://ch2ho.bible25.com/m/bbs/board2.php?bo_table=bible&t=tab4&key=NKRV&key2=&key3=&";			//BIBLE25 url
+            _instance.VERSION_CHECK = 	   		"http://shqrp5200.cafe24.com/AppVersionAndroid.txt";
 
 			
 		} catch (Exception e) {

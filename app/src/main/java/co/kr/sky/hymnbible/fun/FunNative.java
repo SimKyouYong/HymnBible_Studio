@@ -46,7 +46,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import co.kr.sky.AccumThread;
-import co.kr.sky.hymnbible.ChurchSearch;
 import co.kr.sky.hymnbible.ImageViewActivity;
 import co.kr.sky.hymnbible.LMSMainActivity;
 import co.kr.sky.hymnbible.MainActivity;
@@ -247,6 +246,8 @@ public class FunNative  {
 	 * */
 	public void FirstInputAlert(String url , final Activity ac , WebView vc , String return_fun){
 		Log.e("SKY" , "-InputAlert-- :: ");
+        return;
+        /*
 		if (!Check_Preferences.getAppPreferences(ac, "ch").equals("true")) {
 			AlertDialog.Builder alert = new AlertDialog.Builder(ac, AlertDialog.THEME_HOLO_LIGHT);
 			alert.setTitle("알림");
@@ -281,6 +282,7 @@ public class FunNative  {
 			});
 			alert.show();
 		}
+		*/
 
 	}
 
@@ -364,8 +366,8 @@ public class FunNative  {
 	public void ChurchSearch(String url , Activity ac , WebView vc , String return_fun){
 		MainActivity.myTTS.stop();
 		Log.e("SKY" , "-ChurchSearch-- :: ");
-		Intent intent = new Intent(ac , ChurchSearch.class);
-		ac.startActivity(intent);
+		//Intent intent = new Intent(ac , ChurchSearch.class);
+		//ac.startActivity(intent);
 	}
 
 

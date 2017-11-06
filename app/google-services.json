@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "95392529300",
+    "firebase_url": "https://hymnbible-783d1.firebaseio.com",
+    "project_id": "hymnbible-783d1",
+    "storage_bucket": "hymnbible-783d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95392529300:android:2615262a7ac50319",
+        "android_client_info": {
+          "package_name": "co.kr.sky.hymnbible"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95392529300-a0gvbljb35eacf4kc3pmqgh3tt77ktmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiVZrLjnvH8f2lIjfL3CUR1IFY0i4KFbg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

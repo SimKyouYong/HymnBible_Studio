@@ -363,21 +363,6 @@ public class MainActivity extends Activity{
 			pCur.close();
 		}
 	}
-	private int getGroupSummaryCount(String groupId) {
-		Uri uri = ContactsContract.Groups.CONTENT_SUMMARY_URI;
-		String[] projection = new String[]  { 
-				ContactsContract.Groups.SUMMARY_COUNT,
-				ContactsContract.Groups.ACCOUNT_NAME,
-				ContactsContract.Groups.ACCOUNT_TYPE
-		};
-		String selection = ContactsContract.Groups._ID + "=" + groupId;
-		Cursor cursor = managedQuery(uri, projection, selection, null, null);
-		int cnt = 0;
-		while (cursor.moveToNext()) {
-			cnt = cursor.getInt(0);
-		}
-		return cnt;
-	}
 
 
 	private void setting_button(){

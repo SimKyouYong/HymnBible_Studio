@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipboardManager;
@@ -18,6 +19,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.speech.RecognizerIntent;
@@ -42,6 +44,8 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -62,6 +66,38 @@ public class FunNative  {
 	AccumThread mThread;
 
 	private WebView Webview_copy;
+	/*
+     * url : true : 열릴때 값 넘겨줌 , false : 닫힐때 값 넘겨
+     * window.location.href = "js2ios://ImageDown?url=다운받을이미지주소&str=안씀&return=안씀";
+     * */
+	public void ImageDown(String url , final Activity ac , WebView vc , String return_fun){
+		Log.e("SKY" , "-ImageDown-- :: ");
+		String val[] = url.split(",");
+		for (int i = 0; i < val.length; i++) {
+			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
+		}
+		Date d = new Date();
+		String s = d.toString();
+		System.out.println("현재날짜 : "+ s);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		System.out.println("현재날짜 : "+ sdf.format(d));
+		String date = sdf.format(d);
+		Uri source = Uri.parse(val[1]);
+		// Make a new request pointing to the .apk url
+		DownloadManager.Request request = new DownloadManager.Request(source);
+		// appears the same in Notification bar while downloading
+		request.setDescription("Description for the DownloadManager Bar");
+		request.setTitle("event_" + date +   ".xls");
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			request.allowScanningByMediaScanner();
+			request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+		}
+		// save the file in the "Downloads" folder of SDCARD
+		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "event_" + date  +  ".xls");
+		// get download service and enqueue file
+		DownloadManager manager = (DownloadManager) ac.getSystemService(Context.DOWNLOAD_SERVICE);
+		manager.enqueue(request);
+	}
 
 	/*
 	 * url : true : 열릴때 값 넘겨줌 , false : 닫힐때 값 넘겨

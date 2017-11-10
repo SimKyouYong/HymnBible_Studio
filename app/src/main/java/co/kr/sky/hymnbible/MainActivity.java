@@ -61,6 +61,7 @@ import java.util.Map;
 
 import co.kr.sky.AccumThread;
 import co.kr.sky.hymnbible.common.Check_Preferences;
+import co.kr.sky.hymnbible.common.DEFINE;
 import co.kr.sky.hymnbible.common.RealPathUtil;
 import co.kr.sky.hymnbible.fun.CommonUtil;
 import co.kr.sky.hymnbible.fun.MySQLiteOpenHelper;
@@ -132,7 +133,6 @@ public class MainActivity extends Activity{
 	private Boolean Real_exit = true;
 	public static WebView BibleWeb;
 	public WebView BibleWeb_s = null;
-    String url = "http://hoon86.cafe24.com/index.do?";
 //	String url = "http://shqrp5200.cafe24.com/index.do?phone=";
 	//	String url = "http://snap40.cafe24.com/Test/hy.html";
 	MySQLiteOpenHelper vc;					//Data Base 복사 하기 위한 클래스! 
@@ -549,9 +549,9 @@ public class MainActivity extends Activity{
 			}
 
 		});
-		Log.e("SKY" , "URL :: "  + url+dataSet.PHONE);
+		Log.e("SKY" , "URL :: "  + DEFINE.SERVER_WEB_URL+dataSet.PHONE);
 		Real_exit = true;
-		BibleWeb.loadUrl(url+dataSet.PHONE);
+		BibleWeb.loadUrl(DEFINE.SERVER_WEB_URL+dataSet.PHONE);
 		if(Build.VERSION.SDK_INT >= 11)
 		{
 			getWindow().addFlags(16777216);

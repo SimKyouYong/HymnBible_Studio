@@ -56,6 +56,7 @@ import co.kr.sky.hymnbible.ImageViewActivity;
 import co.kr.sky.hymnbible.LMSMainActivity;
 import co.kr.sky.hymnbible.MainActivity;
 import co.kr.sky.hymnbible.common.Check_Preferences;
+import co.kr.sky.hymnbible.common.DEFINE;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 @SuppressLint("NewApi")
@@ -76,18 +77,19 @@ public class FunNative  {
 		for (int i = 0; i < val.length; i++) {
 			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
 		}
+        String filename[] = val[0].split("/");
 		Date d = new Date();
 		String s = d.toString();
 		System.out.println("현재날짜 : "+ s);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		System.out.println("현재날짜 : "+ sdf.format(d));
 		String date = sdf.format(d);
-		Uri source = Uri.parse(val[1]);
+		Uri source = Uri.parse(DEFINE.SERVER_URL + val[0]);
 		// Make a new request pointing to the .apk url
 		DownloadManager.Request request = new DownloadManager.Request(source);
 		// appears the same in Notification bar while downloading
 		request.setDescription("Description for the DownloadManager Bar");
-		request.setTitle("event_" + date +   ".xls");
+		request.setTitle(filename[filename.length-1]);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			request.allowScanningByMediaScanner();
 			request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);

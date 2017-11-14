@@ -16,7 +16,21 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-
+/*
+* tts 이동 소스
+* if (Build.VERSION.SDK_INT >= 14){
+                        Intent intent = new Intent();
+                        intent.setAction("com.android.settings.TTS_SETTINGS");
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }else {
+                        Intent intent = new Intent();
+                        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                        intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.TextToSpeechSettings"));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+* */
 public class IntroActivity extends Activity {
 
 	private static String[] PERMISSIONS_STORAGE = {

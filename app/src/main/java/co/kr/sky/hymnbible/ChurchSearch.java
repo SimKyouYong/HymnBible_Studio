@@ -180,31 +180,35 @@ public class ChurchSearch extends Activity
                         String search_index = order.getString("search_index");
                         String latitude = order.getString("latitude");
                         String hardness = order.getString("hardness");
+                        String VIEWING = order.getString("VIEWING");
                         //latitude1 = "" + latitude.substring(0 , 2) + "." + latitude.substring(2,latitude.length());
                         //hardness1 = "" + hardness.substring(0 , 3) + "." + hardness.substring(3,hardness.length());
-                        arrData.add(new ChurchObj(key_index,
-                                church_name,
-                                church_type,
-                                person_name,
-                                church_post,
-                                church_address,
-                                church_number,
-                                church_fax,
-                                church_homepage,
-                                church_body,
-                                church_img,
-                                church_img2,
-                                church_img3,
-                                church_img4,
-                                church_img5,
-                                church_img6,
-                                church_img7,
-                                church_img8,
-                                church_img9,
-                                church_img10,
-                                search_index,
-                                latitude,
-                                hardness));
+                        if(VIEWING.trim().equals("1")){
+                            arrData.add(new ChurchObj(key_index,
+                                    church_name,
+                                    church_type,
+                                    person_name,
+                                    church_post,
+                                    church_address,
+                                    church_number,
+                                    church_fax,
+                                    church_homepage,
+                                    church_body,
+                                    church_img,
+                                    church_img2,
+                                    church_img3,
+                                    church_img4,
+                                    church_img5,
+                                    church_img6,
+                                    church_img7,
+                                    church_img8,
+                                    church_img9,
+                                    church_img10,
+                                    search_index,
+                                    latitude,
+                                    hardness));
+                        }
+
                     }
                     //write(arrData);
 //					write("" + key_index + "/" + church_address + "/" + latitude + "/" + hardness);

@@ -67,6 +67,28 @@ public class FunNative  {
 	AccumThread mThread;
 
 	private WebView Webview_copy;
+
+	/*
+	* window.location.href = "js2ios://GetVersion?url=안씀&str=안씀&return=리턴함수";
+	* */
+	public void GetVersion(String url , final Activity ac , WebView vc , String return_fun){
+		Log.e("SKY" , "-GetVersion-- :: ");
+		//팝업으로 앱버전 띄우기(개발사 , 앱 버전 정보)
+		PackageInfo pi = null;
+		try {
+			pi = ac.getPackageManager().getPackageInfo(ac.getPackageName(), 0);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String verSion = pi.versionName;
+
+		Log.e("SKY", "javascript:"+return_fun + "('" +verSion + "')");
+		vc.loadUrl("javascript:"+return_fun + "('" +verSion + "')");
+		//vc.loadUrl("javascript:"+"DevInfoReturn" + "('" +verSion + "')");
+
+	}
 	/*
      * url : true : 열릴때 값 넘겨줌 , false : 닫힐때 값 넘겨
      * window.location.href = "js2ios://ImageDown?url=다운받을이미지주소&str=안씀&return=안씀";

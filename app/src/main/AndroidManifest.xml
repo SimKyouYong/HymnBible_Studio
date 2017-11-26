@@ -104,6 +104,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ChurchSearchWebvie"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
         <!--아래 두개의 서비스 태그를 추가한다.-->
         <service
             android:name=".MyFirebaseMessagingService">

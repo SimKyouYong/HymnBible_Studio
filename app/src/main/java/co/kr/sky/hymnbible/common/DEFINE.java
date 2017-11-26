@@ -9,4 +9,7 @@ public class DEFINE {
     public static final String SERVER_WEB_URL       = SERVER_URL + "/index.do?";
 
 
+    public static final String SEARCH_CRUCH       = SERVER_URL + "/searchChurch.do";
+
+
 }

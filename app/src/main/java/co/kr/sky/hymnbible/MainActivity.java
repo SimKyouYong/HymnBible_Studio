@@ -188,6 +188,15 @@ public class MainActivity extends Activity{
 			Log.e("SKY" , "폰번호 :: " + dataSet.PHONE);
 			//dataSet.PHONE = telManager.getDeviceId();
 		} catch (Exception e) {
+			try {
+				dataSet.PHONE = (String) Build.class.getField("SERIAL").get(null);
+			} catch (IllegalAccessException e1) {
+				e1.printStackTrace();
+			} catch (NoSuchFieldException e1) {
+				e1.printStackTrace();
+			}
+			Log.e("SKY" , "SERIAL :: " + dataSet.PHONE);
+
 			// TODO: handle exception
 			//dataSet.PHONE = "01027065915";
 			//confirmDialog("휴대폰 번호가 없는 기기는 가입할수 없습니다.");
@@ -222,6 +231,7 @@ public class MainActivity extends Activity{
                 Log.e("CHECK" , "RESULT  -> " + res);
             }else if(msg.arg1  == 1 ){
                 String res = (String) msg.obj;
+				Log.e("SKY" , "res :: " + res);
 
                 String version;
                 try {
@@ -241,15 +251,24 @@ public class MainActivity extends Activity{
                                 //어플 다운로드 페이지 이동(구글 스토어 이동
                                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
                             }
-                        });
+                        }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int id) {
+										// 대화상자를 취소하여 닫는다.
+										dialog.cancel();
+									}
+								})
+						;
                         final AlertDialog dialog = builder.create();
                         dialog.show();
                     }else{
                         map.clear();
                         map.put("url", dataSet.SERVER+"json/updateRegid.do");
                         map.put("phone",dataSet.PHONE);
-                        map.put("reg_id",dataSet.REG_ID);
-                        map.put("type","android");
+                        map.put("reg_id",Check_Preferences.getAppPreferences(getApplicationContext() , "REG_ID" ));
+
+
+						map.put("type","android");
                         mThread = new AccumThread(MainActivity.this , mAfterAccum , map , 0 , 0 , null);
                         mThread.start();		//스레드 시작!!
                     }

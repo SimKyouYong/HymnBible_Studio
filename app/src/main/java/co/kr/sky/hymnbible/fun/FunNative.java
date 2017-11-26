@@ -84,8 +84,8 @@ public class FunNative  {
 
 		String verSion = pi.versionName;
 
-		Log.e("SKY", "javascript:"+return_fun + "('" +verSion + "')");
-		vc.loadUrl("javascript:"+return_fun + "('" +verSion + "')");
+		Log.e("SKY", "javascript:"+"DevInfoReturn" + "('" +verSion + "')");
+		vc.loadUrl("javascript:"+"DevInfoReturn" + "('" +verSion + "')");
 		//vc.loadUrl("javascript:"+"DevInfoReturn" + "('" +verSion + "')");
 
 	}

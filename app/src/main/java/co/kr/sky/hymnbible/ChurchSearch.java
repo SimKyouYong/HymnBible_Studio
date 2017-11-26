@@ -110,6 +110,8 @@ public class ChurchSearch extends Activity
 
                 case R.id.url_send:
                     //지훈이 url 나오면 SubWEBVIEW 에 넘기기..
+                    Intent board = new Intent(ChurchSearch.this , ChurchSearchWebvie.class);
+                    startActivity(board);
                     break;
                 case R.id.btn_sp2:
                     SendHttp();

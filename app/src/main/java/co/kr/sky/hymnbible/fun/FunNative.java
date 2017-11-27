@@ -550,7 +550,7 @@ public class FunNative  {
 		Intent msg = new Intent(Intent.ACTION_SEND);
 		msg.addCategory(Intent.CATEGORY_DEFAULT);
 		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");
-		msg.putExtra(Intent.EXTRA_TEXT, val[1]);
+		msg.putExtra(Intent.EXTRA_TEXT, val[0]);
 		//		msg.putExtra(Intent.EXTRA_TITLE, "제목");
 		msg.setType("text/plain");    
 		ac.startActivity(Intent.createChooser(msg, "공유"));

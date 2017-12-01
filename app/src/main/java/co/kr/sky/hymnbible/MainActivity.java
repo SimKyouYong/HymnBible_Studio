@@ -163,15 +163,22 @@ public class MainActivity extends Activity{
 	private HashMap<String, String> group_kr;
 	private HashMap<String, String> group_title;
 	private HashMap<String, Integer> group_count;
-
+	public static int ffasdfasdf = 0;
 	@Override
 	public void onResume(){
 		super.onResume();
+		if (ffasdfasdf == 1){
+			ffasdfasdf = 2;
+			getSampleContactList2(ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID + "= " + 4);
+
+		}
 	}
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-        map.clear();
+		startActivity(new Intent(this, IntroActivity.class));
+
+		map.clear();
         map.put("url", dataSet.VERSION_CHECK);
         mThread = new AccumThread(this, mAfterAccum, map, 2, 1, null);
         mThread.start(); // 스레드 시작!!
@@ -219,7 +226,6 @@ public class MainActivity extends Activity{
 
 
 
-		getSampleContactList2(ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID + "= " + 4);
 	}
     Handler mAfterAccum = new Handler()
     {

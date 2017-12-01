@@ -46,7 +46,7 @@
         </receiver>
 
         <activity
-            android:name=".IntroActivity"
+            android:name=".MainActivity"
             android:label="성경과찬송-뉴"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity

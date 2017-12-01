@@ -495,6 +495,7 @@ public class FunNative  {
 		}
 		Intent intent = new Intent(ac , ImageViewActivity.class);
 		intent.putExtra("url", val[1]);
+		intent.putExtra("shareurl", "");
 		ac.startActivity(intent);
 	}
 

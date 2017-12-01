@@ -47,7 +47,7 @@ public class IntroActivity extends Activity {
 	Runnable r= new Runnable() {
 		@Override
 		public void run() {
-			startActivity(new Intent(IntroActivity.this, MainActivity.class));
+			MainActivity.ffasdfasdf = 1;
 			finish();
 
 

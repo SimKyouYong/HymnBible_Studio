@@ -127,7 +127,7 @@
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_gravity="right|bottom"
-            android:background="@mipmap/sms_button_2"/>
+            android:background="@mipmap/write_btn"/>
 
     </FrameLayout>
 

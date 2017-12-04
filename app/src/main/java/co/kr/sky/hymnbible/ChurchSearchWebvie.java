@@ -2,85 +2,34 @@ package co.kr.sky.hymnbible;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
-import android.app.FragmentManager;
-import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.provider.Browser;
 import android.provider.MediaStore;
-import android.speech.RecognizerIntent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.webkit.CookieManager;
-import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
-import android.webkit.URLUtil;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
-import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
-import co.kr.sky.AccumThread;
-import co.kr.sky.hymnbible.adapter.ChurchSearch_Adapter;
 import co.kr.sky.hymnbible.common.DEFINE;
 import co.kr.sky.hymnbible.common.RealPathUtil;
-import co.kr.sky.hymnbible.fun.CommonUtil;
-import co.kr.sky.hymnbible.obj.ChurchObj;
 
 
 public class ChurchSearchWebvie extends Activity {
@@ -141,8 +90,15 @@ public class ChurchSearchWebvie extends Activity {
             //Toast.makeText(getApplicationContext(), "message :  " + message, 0).show();
             Log.e("SKY" , "MESSAGE :: " + message);
 
-            if(message.matches(".*등록완료.*")){
-                finish();
+            if(message.equals("등록되었습니다.")){
+                new AlertDialog.Builder(ChurchSearchWebvie.this ,AlertDialog.THEME_HOLO_LIGHT).setTitle("확인").setMessage(message).setPositiveButton(
+                        android.R.string.ok, new AlertDialog.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                                result.confirm();
+                                finish();
+                            }
+                        }).setCancelable(false).create().show();
+                return true;
             }
             new AlertDialog.Builder(ChurchSearchWebvie.this ,AlertDialog.THEME_HOLO_LIGHT).setTitle("확인").setMessage(message).setPositiveButton(
                     android.R.string.ok, new AlertDialog.OnClickListener() {
@@ -288,6 +244,13 @@ public class ChurchSearchWebvie extends Activity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Log.e("SKY", "shouldOverrideUrlLoading = = = = = = = "+url);
 
+
+            if (url.matches(".*success*")) {
+                //메인 페이지이기에 종료하기 띄운다!.
+                Log.e("SKY", "success");
+                finish();
+                return true;
+            }
             view.loadUrl(url);
 
             return super.shouldOverrideUrlLoading(view, url);

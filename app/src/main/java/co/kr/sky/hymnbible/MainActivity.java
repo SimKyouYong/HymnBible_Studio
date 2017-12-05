@@ -191,6 +191,7 @@ public class MainActivity extends Activity{
 		try {
 			dataSet.PHONE = telManager.getLine1Number().toString().trim().replace("+82", "0").replace("82", "0"); //폰번호를 가져옴
 			//dataSet.PHONE = "01027065911";
+			dataSet.DEVICE_KEY = (String) Build.class.getField("SERIAL").get(null);
 
 			Log.e("SKY" , "폰번호 :: " + dataSet.PHONE);
 			//dataSet.PHONE = telManager.getDeviceId();
@@ -203,7 +204,7 @@ public class MainActivity extends Activity{
 			} catch (NoSuchFieldException e1) {
 				e1.printStackTrace();
 			}
-			Log.e("SKY" , "SERIAL :: " + dataSet.PHONE);
+			Log.e("SKY" , "PHONE :: " + dataSet.PHONE);
 
 			// TODO: handle exception
 			//dataSet.PHONE = "01027065915";

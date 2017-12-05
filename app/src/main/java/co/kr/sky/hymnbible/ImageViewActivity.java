@@ -19,6 +19,7 @@ import android.view.View;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -33,14 +34,20 @@ public class ImageViewActivity extends Activity{
 
 	public static WebView ImageWebView;
 
+	private LinearLayout bottomview01;
 	ImageView imgView;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view);
 
 		imgView = (ImageView)findViewById(R.id.imgView);
+		bottomview01 = (LinearLayout)findViewById(R.id.bottomview01);
 		Log.e("SKY" , "url go :: " + getIntent().getStringExtra("url"));
 
+
+		if (getIntent().getStringExtra("shareurl").equals("안씀")){
+			bottomview01.setVisibility(View.GONE);
+		}
 		//setting_web();
 		findViewById(R.id.down).setOnClickListener(btnListener);
 		findViewById(R.id.share).setOnClickListener(btnListener);

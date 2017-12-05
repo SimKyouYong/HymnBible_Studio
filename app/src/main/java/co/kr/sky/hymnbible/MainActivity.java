@@ -196,7 +196,8 @@ public class MainActivity extends Activity{
 			//dataSet.PHONE = telManager.getDeviceId();
 		} catch (Exception e) {
 			try {
-				dataSet.PHONE = (String) Build.class.getField("SERIAL").get(null);
+				dataSet.PHONE = "";
+				dataSet.DEVICE_KEY = (String) Build.class.getField("SERIAL").get(null);
 			} catch (IllegalAccessException e1) {
 				e1.printStackTrace();
 			} catch (NoSuchFieldException e1) {
@@ -576,7 +577,7 @@ public class MainActivity extends Activity{
 		});
 		Log.e("SKY" , "URL :: "  + DEFINE.SERVER_WEB_URL+dataSet.PHONE);
 		Real_exit = true;
-		BibleWeb.loadUrl(DEFINE.SERVER_WEB_URL+"phone=" + dataSet.PHONE);
+		BibleWeb.loadUrl(DEFINE.SERVER_WEB_URL+"key=" + dataSet.DEVICE_KEY+ "&phone=" + dataSet.PHONE);
 		if(Build.VERSION.SDK_INT >= 11)
 		{
 			getWindow().addFlags(16777216);

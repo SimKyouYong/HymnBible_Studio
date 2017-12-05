@@ -21,6 +21,7 @@ public class CommonUtil {
 	public ArrayList<MyPhoneListObj2> arrData_real = new ArrayList<MyPhoneListObj2>();
 	public String Local_Path;
 	public String PHONE;
+	public String DEVICE_KEY;
 	public String SERVER;
 	public String SERVER_IMG;
 	public String SERVER_ADIMG;

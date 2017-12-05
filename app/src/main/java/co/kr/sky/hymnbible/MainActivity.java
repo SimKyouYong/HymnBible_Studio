@@ -133,7 +133,7 @@ public class MainActivity extends Activity{
 	private Boolean Real_exit = true;
 	public static WebView BibleWeb;
 	public WebView BibleWeb_s = null;
-//	String url = "http://shqrp5200.cafe24.com/index.do?phone=";
+	//	String url = "http://shqrp5200.cafe24.com/index.do?phone=";
 	//	String url = "http://snap40.cafe24.com/Test/hy.html";
 	MySQLiteOpenHelper vc;					//Data Base 복사 하기 위한 클래스! 
 	CommonUtil dataSet = CommonUtil.getInstance();
@@ -179,9 +179,9 @@ public class MainActivity extends Activity{
 		startActivity(new Intent(this, IntroActivity.class));
 
 		map.clear();
-        map.put("url", dataSet.VERSION_CHECK);
-        mThread = new AccumThread(this, mAfterAccum, map, 2, 1, null);
-        mThread.start(); // 스레드 시작!!
+		map.put("url", dataSet.VERSION_CHECK);
+		mThread = new AccumThread(this, mAfterAccum, map, 2, 1, null);
+		mThread.start(); // 스레드 시작!!
 
 		vc = new MySQLiteOpenHelper(this);
 		bottomview = (LinearLayout)findViewById(R.id.bottomview);
@@ -227,62 +227,62 @@ public class MainActivity extends Activity{
 
 
 	}
-    Handler mAfterAccum = new Handler()
-    {
-        @Override
-        public void handleMessage(Message msg)
-        {
-            if (msg.arg1  == 0 ) {
-                String res = (String)msg.obj;
-                Log.e("CHECK" , "RESULT  -> " + res);
-            }else if(msg.arg1  == 1 ){
-                String res = (String) msg.obj;
+	Handler mAfterAccum = new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg)
+		{
+			if (msg.arg1  == 0 ) {
+				String res = (String)msg.obj;
+				Log.e("CHECK" , "RESULT  -> " + res);
+			}else if(msg.arg1  == 1 ){
+				String res = (String) msg.obj;
 				Log.e("SKY" , "res :: " + res);
 
-                String version;
-                try {
-                    PackageInfo i = MainActivity.this.getPackageManager().getPackageInfo(MainActivity.this.getPackageName(), 0);
-                    version = i.versionName.trim();
+				String version;
+				try {
+					PackageInfo i = MainActivity.this.getPackageManager().getPackageInfo(MainActivity.this.getPackageName(), 0);
+					version = i.versionName.trim();
 
-                    float i_version = Float.parseFloat(version);
-                    float i_result = Float.parseFloat(res);
-                    Log.e("CHECK", "version  -> " + i_version);
-                    Log.e("CHECK", "RESULT  -> " + i_result);
-                    if (i_result != i_version){
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this , AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-                        builder.setMessage("업데이트 되었습니다. 구글플레이어 스토어로 이동합니다");
-                        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //어플 다운로드 페이지 이동(구글 스토어 이동
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                            }
-                        }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
-									@Override
-									public void onClick(DialogInterface dialog, int id) {
-										// 대화상자를 취소하여 닫는다.
-										dialog.cancel();
-									}
-								})
+					float i_version = Float.parseFloat(version);
+					float i_result = Float.parseFloat(res);
+					Log.e("CHECK", "version  -> " + i_version);
+					Log.e("CHECK", "RESULT  -> " + i_result);
+					if (i_result != i_version){
+						final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this , AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+						builder.setMessage("업데이트 되었습니다. 구글플레이어 스토어로 이동합니다");
+						builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								//어플 다운로드 페이지 이동(구글 스토어 이동
+								startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+							}
+						}).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								// 대화상자를 취소하여 닫는다.
+								dialog.cancel();
+							}
+						})
 						;
-                        final AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }else{
-                        map.clear();
-                        map.put("url", dataSet.SERVER+"json/updateRegid.do");
-                        map.put("phone",dataSet.PHONE);
-                        map.put("reg_id",Check_Preferences.getAppPreferences(getApplicationContext() , "REG_ID" ));
+						final AlertDialog dialog = builder.create();
+						dialog.show();
+					}else{
+						map.clear();
+						map.put("url", dataSet.SERVER+"json/updateRegid.do");
+						map.put("phone",dataSet.PHONE);
+						map.put("reg_id",Check_Preferences.getAppPreferences(getApplicationContext() , "REG_ID" ));
 
 
 						map.put("type","android");
-                        mThread = new AccumThread(MainActivity.this , mAfterAccum , map , 0 , 0 , null);
-                        mThread.start();		//스레드 시작!!
-                    }
+						mThread = new AccumThread(MainActivity.this , mAfterAccum , map , 0 , 0 , null);
+						mThread.start();		//스레드 시작!!
+					}
 
-                } catch(PackageManager.NameNotFoundException e) { }
-            }
-        }
-    };
+				} catch(PackageManager.NameNotFoundException e) { }
+			}
+		}
+	};
 	public void getSampleContactList2(String groupID) {
 		Log.e("SKY" , "--getSampleContactList2-- :: " + groupID);
 		Uri groupURI = ContactsContract.Data.CONTENT_URI;
@@ -294,8 +294,8 @@ public class MainActivity extends Activity{
 				groupURI,
 				projection,
 				ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID
-				+ "=" + 4, 
-				null, 
+						+ "=" + 4,
+				null,
 				null);
 
 		int count_all = 0;
@@ -306,7 +306,7 @@ public class MainActivity extends Activity{
 			Cursor pCur = getContentResolver().query(
 					ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
 					ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-							new String[] { id }, null);
+					new String[] { id }, null);
 
 			int i =0;
 			while (pCur.moveToNext()) {
@@ -327,24 +327,24 @@ public class MainActivity extends Activity{
 
 	}
 	public void onRequestPermissionsResult(int requestCode,
-			String permissions[], int[] grantResults) {
+										   String permissions[], int[] grantResults) {
 		switch (requestCode) {
-		case 1: {
-			Log.e("SKY", "TEST");
-			//권한 획득이 거부되면 결과 배열은 비어있게 됨
-			if (grantResults.length > 0
-					&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+			case 1: {
+				Log.e("SKY", "TEST");
+				//권한 획득이 거부되면 결과 배열은 비어있게 됨
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-				//권한 획득이 허용되면 수행해야 할 작업이 표시됨
-				//일반적으로 작업을 처리할 메서드를 호출
+					//권한 획득이 허용되면 수행해야 할 작업이 표시됨
+					//일반적으로 작업을 처리할 메서드를 호출
 
-			} else {
+				} else {
 
-				//권한 획득이 거부되면 수행해야 할 적업이 표시됨
-				//일반적으로 작업을 처리할 메서드를 호출
+					//권한 획득이 거부되면 수행해야 할 적업이 표시됨
+					//일반적으로 작업을 처리할 메서드를 호출
+				}
+				return;
 			}
-			return;
-		}
 		}
 	}
 
@@ -360,7 +360,7 @@ public class MainActivity extends Activity{
 				groupURI,
 				projection,
 				ContactsContract.CommonDataKinds.GroupMembership.GROUP_ROW_ID
-				+ "=" + groupID, null, null);
+						+ "=" + groupID, null, null);
 
 		while (c.moveToNext()) {
 			String id = c
@@ -369,7 +369,7 @@ public class MainActivity extends Activity{
 			Cursor pCur = getContentResolver().query(
 					ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
 					ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-							new String[] { id }, null);
+					new String[] { id }, null);
 
 			int i =0;
 			while (pCur.moveToNext()) {
@@ -421,54 +421,54 @@ public class MainActivity extends Activity{
 			return;
 		}
 		switch (requestCode) {
-		case 1:
-			if (requestCode == INPUT_FILE_REQUEST_CODE) {
-                Log.e("SKY" , "INPUT_FILE_REQUEST_CODE");
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-					if (mFilePathCallback == null) {
-						super.onActivityResult(requestCode, resultCode, data);
-						return;
-					}
-					Uri[] results = new Uri[]{getResultUri(data)};
+			case 1:
+				if (requestCode == INPUT_FILE_REQUEST_CODE) {
+					Log.e("SKY" , "INPUT_FILE_REQUEST_CODE");
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+						if (mFilePathCallback == null) {
+							super.onActivityResult(requestCode, resultCode, data);
+							return;
+						}
+						Uri[] results = new Uri[]{getResultUri(data)};
 
-					mFilePathCallback.onReceiveValue(results);
-					mFilePathCallback = null;
-				} else {
-					if (mUploadMessage == null) {
-						super.onActivityResult(requestCode, resultCode, data);
-						return;
-					}
-					Uri result = getResultUri(data);
+						mFilePathCallback.onReceiveValue(results);
+						mFilePathCallback = null;
+					} else {
+						if (mUploadMessage == null) {
+							super.onActivityResult(requestCode, resultCode, data);
+							return;
+						}
+						Uri result = getResultUri(data);
 
-					Log.d(getClass().getName(), "openFileChooser : "+result);
-					mUploadMessage.onReceiveValue(result);
-					mUploadMessage = null;
+						Log.d(getClass().getName(), "openFileChooser : "+result);
+						mUploadMessage.onReceiveValue(result);
+						mUploadMessage = null;
+					}
 				}
-			} 
-			break;
-		case 999:
-			if (resultCode == RESULT_OK && null != data) {
+				break;
+			case 999:
+				if (resultCode == RESULT_OK && null != data) {
 
-				ArrayList<String> result = data
-						.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-				Log.e("SKY" , "RESULT :: " + result.get(0).trim());
-				Log.e("SKY" , "return_fun :: " + return_fun);
-				BibleWeb.loadUrl("javascript:"+return_fun + "('" + result.get(0).trim() + "')");
-			}
-			break;
-		case REQ_CODE_SPEECH_INPUT:
-			if (requestCode == FILECHOOSER_NORMAL_REQ_CODE) {
-				if (filePathCallbackNormal == null) return ;
-				Uri result = (data == null || resultCode != RESULT_OK) ? null : data.getData();
-				filePathCallbackNormal.onReceiveValue(result);
-				filePathCallbackNormal = null;
-			} else if (requestCode == FILECHOOSER_LOLLIPOP_REQ_CODE) {
-				if (filePathCallbackLollipop == null) return ;
-				filePathCallbackLollipop.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
-				filePathCallbackLollipop = null;
-			} else if (requestCode == PICK_IMAGE_REQ_CODE) {
-			}
-			break;
+					ArrayList<String> result = data
+							.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+					Log.e("SKY" , "RESULT :: " + result.get(0).trim());
+					Log.e("SKY" , "return_fun :: " + return_fun);
+					BibleWeb.loadUrl("javascript:"+return_fun + "('" + result.get(0).trim() + "')");
+				}
+				break;
+			case REQ_CODE_SPEECH_INPUT:
+				if (requestCode == FILECHOOSER_NORMAL_REQ_CODE) {
+					if (filePathCallbackNormal == null) return ;
+					Uri result = (data == null || resultCode != RESULT_OK) ? null : data.getData();
+					filePathCallbackNormal.onReceiveValue(result);
+					filePathCallbackNormal = null;
+				} else if (requestCode == FILECHOOSER_LOLLIPOP_REQ_CODE) {
+					if (filePathCallbackLollipop == null) return ;
+					filePathCallbackLollipop.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
+					filePathCallbackLollipop = null;
+				} else if (requestCode == PICK_IMAGE_REQ_CODE) {
+				}
+				break;
 
 
 
@@ -501,38 +501,38 @@ public class MainActivity extends Activity{
 			String jang = Check_Preferences.getAppPreferences(MainActivity.this, "jang");
 			switch (v.getId()) {
 
-			case R.id.btnsample:	
-				Log.e("SKY"  , "--btnsample--");
-				break;
-			case R.id.b_bible1:	
-				Log.e("SKY"  , "--b_bible1--");
-				BibleWeb.loadUrl(Before_URL);
-				break;
-			case R.id.b_bible2:							//공유하기
-				Log.e("SKY"  , "--b_bible2--");
-				Before_URL = URL_NOW; 
-				//book=1&jang=1&tab_title=해설
-				BibleWeb.loadUrl(dataSet.BIBLE25_URL1 + "book=" + jang + "&jang=" + book + "&tab_title=해설");
-				break;
-			case R.id.b_bible3:	
-				Log.e("SKY"  , "--b_bible3--");
-				Before_URL = URL_NOW;
-				BibleWeb.loadUrl(dataSet.BIBLE25_URL2 + "book=" + jang + "&jang=" + book + "&tab_title=핵심");
-				break;
-			case R.id.b_bible4:	
-				Log.e("SKY"  , "--b_bible4--");
-				Before_URL = URL_NOW;
-				BibleWeb.loadUrl(dataSet.BIBLE25_URL3 + "book=" + jang + "&jang=" + book + "&tab_title=묵상");
-				break;
-			case R.id.b_bible5:	
-				Log.e("SKY"  , "--b_bible5--");
-				Before_URL = URL_NOW;
-				BibleWeb.loadUrl(dataSet.BIBLE25_URL4 + "book=" + jang + "&jang=" + book + "&tab_title=Q&A");
-				break;
-			case R.id.b_bible6:	
-				Log.e("SKY"  , "--b_bible6--");
-				Before_URL = URL_NOW;
-				break;
+				case R.id.btnsample:
+					Log.e("SKY"  , "--btnsample--");
+					break;
+				case R.id.b_bible1:
+					Log.e("SKY"  , "--b_bible1--");
+					BibleWeb.loadUrl(Before_URL);
+					break;
+				case R.id.b_bible2:							//공유하기
+					Log.e("SKY"  , "--b_bible2--");
+					Before_URL = URL_NOW;
+					//book=1&jang=1&tab_title=해설
+					BibleWeb.loadUrl(dataSet.BIBLE25_URL1 + "book=" + jang + "&jang=" + book + "&tab_title=해설");
+					break;
+				case R.id.b_bible3:
+					Log.e("SKY"  , "--b_bible3--");
+					Before_URL = URL_NOW;
+					BibleWeb.loadUrl(dataSet.BIBLE25_URL2 + "book=" + jang + "&jang=" + book + "&tab_title=핵심");
+					break;
+				case R.id.b_bible4:
+					Log.e("SKY"  , "--b_bible4--");
+					Before_URL = URL_NOW;
+					BibleWeb.loadUrl(dataSet.BIBLE25_URL3 + "book=" + jang + "&jang=" + book + "&tab_title=묵상");
+					break;
+				case R.id.b_bible5:
+					Log.e("SKY"  , "--b_bible5--");
+					Before_URL = URL_NOW;
+					BibleWeb.loadUrl(dataSet.BIBLE25_URL4 + "book=" + jang + "&jang=" + book + "&tab_title=Q&A");
+					break;
+				case R.id.b_bible6:
+					Log.e("SKY"  , "--b_bible6--");
+					Before_URL = URL_NOW;
+					break;
 
 			}
 		}
@@ -545,7 +545,7 @@ public class MainActivity extends Activity{
 		//setWebViewOpenWindow();
 		BibleWeb.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//팝업(window.open) 권한
 		BibleWeb.getSettings().setSupportMultipleWindows(true); //팝업을허용하고 setSupportMultipleWindows를 주지않으면 url이로딩 된다
-		BibleWeb.getSettings().setJavaScriptEnabled(true); 
+		BibleWeb.getSettings().setJavaScriptEnabled(true);
 //		BibleWeb.addJavascriptInterface(new AndroidBridge(), "android");
 		BibleWeb.getSettings().setDomStorageEnabled(true);
 		BibleWeb.getSettings().setBuiltInZoomControls(true);
@@ -576,7 +576,7 @@ public class MainActivity extends Activity{
 		});
 		Log.e("SKY" , "URL :: "  + DEFINE.SERVER_WEB_URL+dataSet.PHONE);
 		Real_exit = true;
-		BibleWeb.loadUrl(DEFINE.SERVER_WEB_URL+dataSet.PHONE);
+		BibleWeb.loadUrl(DEFINE.SERVER_WEB_URL+"phone=" + dataSet.PHONE);
 		if(Build.VERSION.SDK_INT >= 11)
 		{
 			getWindow().addFlags(16777216);
@@ -595,25 +595,25 @@ public class MainActivity extends Activity{
 	 *****************/
 	class ITGOWebChromeClient extends WebViewClient {
 
-		
+
 		@Override
 		public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
-		  final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-		  builder.setMessage("유효하지 않은 사이트 입니다.\n계속 진행하시겠습니까?");
-		  builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
-		    @Override
-		    public void onClick(DialogInterface dialog, int which) {
-		      handler.proceed();
-		    }
-		  });
-		  builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-		    @Override
-		    public void onClick(DialogInterface dialog, int which) {
-		      handler.cancel();
-		    }
-		  });
-		  final AlertDialog dialog = builder.create();
-		  dialog.show();
+			final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+			builder.setMessage("유효하지 않은 사이트 입니다.\n계속 진행하시겠습니까?");
+			builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					handler.proceed();
+				}
+			});
+			builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					handler.cancel();
+				}
+			});
+			final AlertDialog dialog = builder.create();
+			dialog.show();
 		}
 		@Override
 		public void onReceivedError(WebView view, int errorCode,String description, String failingUrl) {
@@ -621,24 +621,24 @@ public class MainActivity extends Activity{
 			Log.e("SKY", "errorCode = = = = = = = "+errorCode);
 
 			switch(errorCode) {
-			case ERROR_AUTHENTICATION: break;               // 서버에서 사용자 인증 실패
-			case ERROR_BAD_URL: break;                           // 잘못된 URL
-			case ERROR_CONNECT: break;                          // 서버로 연결 실패
-			case ERROR_FAILED_SSL_HANDSHAKE: break;    // SSL handshake 수행 실패
-			case ERROR_FILE: break;                                  // 일반 파일 오류
-			case ERROR_FILE_NOT_FOUND: break;               // 파일을 찾을 수 없습니다
-			case ERROR_HOST_LOOKUP: break;           // 서버 또는 프록시 호스트 이름 조회 실패
-			case ERROR_IO: break;                              // 서버에서 읽거나 서버로 쓰기 실패
-			case ERROR_PROXY_AUTHENTICATION: break;   // 프록시에서 사용자 인증 실패
-			case ERROR_REDIRECT_LOOP: break;               // 너무 많은 리디렉션
-			case ERROR_TIMEOUT: break;                          // 연결 시간 초과
-			case ERROR_TOO_MANY_REQUESTS: break;     // 페이지 로드중 너무 많은 요청 발생
-			case ERROR_UNKNOWN: break;                        // 일반 오류
-			case ERROR_UNSUPPORTED_AUTH_SCHEME: break; // 지원되지 않는 인증 체계
-			case ERROR_UNSUPPORTED_SCHEME: break;          // URI가 지원되지 않는 방식
+				case ERROR_AUTHENTICATION: break;               // 서버에서 사용자 인증 실패
+				case ERROR_BAD_URL: break;                           // 잘못된 URL
+				case ERROR_CONNECT: break;                          // 서버로 연결 실패
+				case ERROR_FAILED_SSL_HANDSHAKE: break;    // SSL handshake 수행 실패
+				case ERROR_FILE: break;                                  // 일반 파일 오류
+				case ERROR_FILE_NOT_FOUND: break;               // 파일을 찾을 수 없습니다
+				case ERROR_HOST_LOOKUP: break;           // 서버 또는 프록시 호스트 이름 조회 실패
+				case ERROR_IO: break;                              // 서버에서 읽거나 서버로 쓰기 실패
+				case ERROR_PROXY_AUTHENTICATION: break;   // 프록시에서 사용자 인증 실패
+				case ERROR_REDIRECT_LOOP: break;               // 너무 많은 리디렉션
+				case ERROR_TIMEOUT: break;                          // 연결 시간 초과
+				case ERROR_TOO_MANY_REQUESTS: break;     // 페이지 로드중 너무 많은 요청 발생
+				case ERROR_UNKNOWN: break;                        // 일반 오류
+				case ERROR_UNSUPPORTED_AUTH_SCHEME: break; // 지원되지 않는 인증 체계
+				case ERROR_UNSUPPORTED_SCHEME: break;          // URI가 지원되지 않는 방식
 			}
 		}
-		@Override 
+		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			Log.e("SKY", "shouldOverrideUrlLoading = = = = = = = "+url);
 
@@ -702,7 +702,7 @@ public class MainActivity extends Activity{
 			return super.shouldOverrideUrlLoading(view, url);
 		}
 
-		@Override 
+		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
 			super.onPageStarted(view, url, favicon);
 			Log.e("SKY", "onPageStarted = = = = = = = "+url);
@@ -735,7 +735,7 @@ public class MainActivity extends Activity{
 		@Override
 		public void onPageFinished(WebView view, String url){
 			//			CookieSyncManager.getInstance().sync();
-			super.onPageFinished(view, url); 
+			super.onPageFinished(view, url);
 			//String ht = "javascript:window.droid.print(document.getElementsByTagName('html')[0].innerHTML);";
 			//BibleWeb.loadUrl(ht);
 			url_copy_progress = url;
@@ -743,7 +743,7 @@ public class MainActivity extends Activity{
 			customProgressClose();
 			//하단 bottomView visible
 			if (url.matches("http://sharp5200.cafe24.com/bible/bible_view.do.*") ||
-					url.matches("http://ch2ho.bible25.com/m/bbs.*") || 
+					url.matches("http://ch2ho.bible25.com/m/bbs.*") ||
 					url.matches(".*DBSQL.*")) {
 				bottomview.setVisibility(View.GONE);
 			}else{
@@ -754,9 +754,9 @@ public class MainActivity extends Activity{
 			if (url.indexOf("js2ios://") != -1) {
 				view.stopLoading();
 				try{
-					url = URLDecoder.decode(url, "UTF-8"); 
+					url = URLDecoder.decode(url, "UTF-8");
 				}catch(Exception e){
-				} 
+				}
 				SplitFun(url);
 				/*
 				if (url.matches(".*DBSQL.*")) {
@@ -822,9 +822,9 @@ public class MainActivity extends Activity{
 			if (message.indexOf("js2ios://") != -1) {
 				Log.e("SKY" ,"고");
 				try{
-					message = URLDecoder.decode(message, "UTF-8"); 
+					message = URLDecoder.decode(message, "UTF-8");
 				}catch(Exception e){
-				} 
+				}
 				SplitFun(message);
 				result.confirm();
 				return true;
@@ -842,70 +842,70 @@ public class MainActivity extends Activity{
 		};
 		@Override
 		public boolean onJsConfirm(WebView view, String url, String message,
-				final JsResult result) {
+								   final JsResult result) {
 			// TODO Auto-generated method stub
 			//return super.onJsConfirm(view, url, message, result);
 			new AlertDialog.Builder(view.getContext())
-			.setTitle("알림")
-			.setMessage(message)
-			.setPositiveButton("네",
-					new AlertDialog.OnClickListener(){
-				public void onClick(DialogInterface dialog, int which) {
-					result.confirm();
-				}
-			})
-			.setNegativeButton("아니오", 
-					new AlertDialog.OnClickListener(){
-				public void onClick(DialogInterface dialog, int which) {
-					result.cancel();
-				}
-			})
-			.setCancelable(false)
-			.create()
-			.show();
+					.setTitle("알림")
+					.setMessage(message)
+					.setPositiveButton("네",
+							new AlertDialog.OnClickListener(){
+								public void onClick(DialogInterface dialog, int which) {
+									result.confirm();
+								}
+							})
+					.setNegativeButton("아니오",
+							new AlertDialog.OnClickListener(){
+								public void onClick(DialogInterface dialog, int which) {
+									result.cancel();
+								}
+							})
+					.setCancelable(false)
+					.create()
+					.show();
 			return true;
 		}
 
-        @SuppressWarnings("unused")
-        public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-            mUploadMessage = uploadMsg;
-            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-            i.addCategory(Intent.CATEGORY_OPENABLE);
-            i.setType("image/*");
+		@SuppressWarnings("unused")
+		public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+			mUploadMessage = uploadMsg;
+			Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+			i.addCategory(Intent.CATEGORY_OPENABLE);
+			i.setType("image/*");
 
 
-            startActivityForResult(Intent.createChooser(i, "파일 선택"), FILECHOOSER_RESULTCODE);
-        }
-        @SuppressWarnings("unused")
-        public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-            mUploadMessage = uploadMsg;
-            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-            i.addCategory(Intent.CATEGORY_OPENABLE);
-            i.setType("image/*");
+			startActivityForResult(Intent.createChooser(i, "파일 선택"), FILECHOOSER_RESULTCODE);
+		}
+		@SuppressWarnings("unused")
+		public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
+			mUploadMessage = uploadMsg;
+			Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+			i.addCategory(Intent.CATEGORY_OPENABLE);
+			i.setType("image/*");
 
 
-            startActivityForResult(Intent.createChooser(i, "파일 선택"), FILECHOOSER_RESULTCODE);
-        }
-        @SuppressWarnings("unused")
-        public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-            mUploadMessage = uploadMsg;
-            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-            i.addCategory(Intent.CATEGORY_OPENABLE);
-            i.setType("image/*");
+			startActivityForResult(Intent.createChooser(i, "파일 선택"), FILECHOOSER_RESULTCODE);
+		}
+		@SuppressWarnings("unused")
+		public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
+			mUploadMessage = uploadMsg;
+			Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+			i.addCategory(Intent.CATEGORY_OPENABLE);
+			i.setType("image/*");
 
-            startActivityForResult(Intent.createChooser(i, "파일 선택"), FILECHOOSER_RESULTCODE);
-        }
+			startActivityForResult(Intent.createChooser(i, "파일 선택"), FILECHOOSER_RESULTCODE);
+		}
 
-        public boolean onShowFileChooser(WebView webView,
-                                         ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
-            Log.e("SKY", "5.0+");
-            System.out.println("WebViewActivity A>5, OS Version : " + Build.VERSION.SDK_INT + "\t onSFC(WV,VCUB,FCP), n=3");
-            if (mFilePathCallback != null) {
-                mFilePathCallback.onReceiveValue(null);
-            }
-            mFilePathCallback = filePathCallback;
-            imageChooser();
-            return true;
+		public boolean onShowFileChooser(WebView webView,
+										 ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+			Log.e("SKY", "5.0+");
+			System.out.println("WebViewActivity A>5, OS Version : " + Build.VERSION.SDK_INT + "\t onSFC(WV,VCUB,FCP), n=3");
+			if (mFilePathCallback != null) {
+				mFilePathCallback.onReceiveValue(null);
+			}
+			mFilePathCallback = filePathCallback;
+			imageChooser();
+			return true;
 
         }
         @Override
@@ -918,9 +918,9 @@ public class MainActivity extends Activity{
                 databaseIdentifier, long currentQuota, long estimatedSize,
                                             long totalUsedQuota, WebStorage.QuotaUpdater quotaUpdater) {
 
-            super.onExceededDatabaseQuota(url, databaseIdentifier, currentQuota,
-                    estimatedSize, totalUsedQuota, quotaUpdater);
-        }
+			super.onExceededDatabaseQuota(url, databaseIdentifier, currentQuota,
+					estimatedSize, totalUsedQuota, quotaUpdater);
+		}
 	}
 
 	private File createImageFile() throws IOException {
@@ -933,7 +933,7 @@ public class MainActivity extends Activity{
 				imageFileName,  /* prefix */
 				".jpg",         /* suffix */
 				storageDir      /* directory */
-				);
+		);
 		return imageFile;
 	}
 
@@ -978,49 +978,49 @@ public class MainActivity extends Activity{
 
 		return super.onKeyDown(keyCode, event);
 	}
-    private void imageChooser() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-                takePictureIntent.putExtra("PhotoPath", mCameraPhotoPath);
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                Log.e(getClass().getName(), "Unable to create Image File", ex);
-            }
+	private void imageChooser() {
+		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+			// Create the File where the photo should go
+			File photoFile = null;
+			try {
+				photoFile = createImageFile();
+				takePictureIntent.putExtra("PhotoPath", mCameraPhotoPath);
+			} catch (IOException ex) {
+				// Error occurred while creating the File
+				Log.e(getClass().getName(), "Unable to create Image File", ex);
+			}
 
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                mCameraPhotoPath = "file:"+photoFile.getAbsolutePath();
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(photoFile));
-            } else {
-                takePictureIntent = null;
-            }
-        }
+			// Continue only if the File was successfully created
+			if (photoFile != null) {
+				mCameraPhotoPath = "file:"+photoFile.getAbsolutePath();
+				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+						Uri.fromFile(photoFile));
+			} else {
+				takePictureIntent = null;
+			}
+		}
 
-        Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
-        contentSelectionIntent.setType(TYPE_IMAGE);
+		Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
+		contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
+		contentSelectionIntent.setType(TYPE_IMAGE);
 
-        Intent[] intentArray;
-        if(takePictureIntent != null) {
-            intentArray = new Intent[]{takePictureIntent};
-        } else {
-            intentArray = new Intent[0];
-        }
+		Intent[] intentArray;
+		if(takePictureIntent != null) {
+			intentArray = new Intent[]{takePictureIntent};
+		} else {
+			intentArray = new Intent[0];
+		}
 
-        Intent chooserIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
-        chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray);
-        chooserIntent.setType("image/*");
-        chooserIntent.addCategory(Intent.CATEGORY_OPENABLE);
+		Intent chooserIntent = new Intent(Intent.ACTION_GET_CONTENT);
+		chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
+		chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
+		chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray);
+		chooserIntent.setType("image/*");
+		chooserIntent.addCategory(Intent.CATEGORY_OPENABLE);
 
-        startActivityForResult(chooserIntent, INPUT_FILE_REQUEST_CODE);
-    }
+		startActivityForResult(chooserIntent, INPUT_FILE_REQUEST_CODE);
+	}
 	private void SplitFun(String url){
 		url = url.replace("js2ios://", "");
 		String Fun = url.substring(0, url.indexOf("?"));

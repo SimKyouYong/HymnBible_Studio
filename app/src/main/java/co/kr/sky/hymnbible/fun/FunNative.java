@@ -99,7 +99,7 @@ public class FunNative  {
 		for (int i = 0; i < val.length; i++) {
 			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
 		}
-        String filename[] = val[0].split("/");
+		String filename[] = val[0].split("/");
 		Date d = new Date();
 		String s = d.toString();
 		System.out.println("현재날짜 : "+ s);
@@ -149,7 +149,7 @@ public class FunNative  {
 		for (int i = 0; i < val.length; i++) {
 			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
 		}
-		Intent marketLaunch = new Intent(Intent.ACTION_VIEW); 
+		Intent marketLaunch = new Intent(Intent.ACTION_VIEW);
 		marketLaunch.setData(Uri.parse("https://www.youtube.com/results?search_query=" + val[0]));
 
 		ac.startActivity(marketLaunch);
@@ -168,7 +168,7 @@ public class FunNative  {
 		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");
 		msg.putExtra(Intent.EXTRA_TEXT, "무료 “성경과찬송-뉴”\n본앱은 찬양 선교를 위해 중점을\n두고 만들어진 서비스입니다.\n찬송가 645전곡 반주제공, 무료문자\n성경과찬송-뉴, 교회찾기 기능등\n\n▶구글스토어 바로가기\nhttps://play.google.com/store/apps/details?id=co.kr.sky.hymnbible\n\n▶애플스토어 바로가기\nhttps://appsto.re/kr/ptiAjb.i\n\n※ 기능안내 ※\n▶찬송가 전곡 반주제공\n    전문 연주자가 직접 연주 녹음\n    예배의 품격을 높여줍니다.\n    4부(소.엘.테.베) 멜로디지원\n▶무료 문자발송(단.장문)\n   교회&단체,영업등 성도.고객관리로\n   한번에 500명까지 발송가능\n▶성경 : 관주 특화기능\n▶교회찾기 서비스\n▶경조사 금전관리\n\n아이폰.안드로이드 앱스토어에서\n'성경과찬송뉴'를 검색");
 		//		msg.putExtra(Intent.EXTRA_TITLE, "제목");
-		msg.setType("text/plain");    
+		msg.setType("text/plain");
 		ac.startActivity(Intent.createChooser(msg, "공유"));
 		/*
 		CharSequence info[] = new CharSequence[] {"문자보내기", "카카오톡" };
@@ -232,7 +232,7 @@ public class FunNative  {
 	public void MarketLink(String url , final Activity ac , WebView vc , String return_fun){
 		Log.e("SKY" , "-MarketLink-- :: ");
 
-		Intent marketLaunch = new Intent(Intent.ACTION_VIEW); 
+		Intent marketLaunch = new Intent(Intent.ACTION_VIEW);
 		marketLaunch.setData(Uri.parse("https://play.google.com/store/apps/details?id=co.kr.sky.hymnbible"));
 
 		ac.startActivity(marketLaunch);
@@ -308,7 +308,7 @@ public class FunNative  {
 	 * */
 	public void FirstInputAlert(String url , final Activity ac , WebView vc , String return_fun){
 		Log.e("SKY" , "-InputAlert-- :: ");
-        return;
+		return;
         /*
 		if (!Check_Preferences.getAppPreferences(ac, "ch").equals("true")) {
 			AlertDialog.Builder alert = new AlertDialog.Builder(ac, AlertDialog.THEME_HOLO_LIGHT);
@@ -485,6 +485,25 @@ public class FunNative  {
 	 * url :: 안씀 
 	 * str :: url 주소
 	 * return :: 안씀 
+	 * window.location.href = "js2ios://Advertising?url=광고 url&str=안씀&return=리턴함수";
+	 * */
+	public void Advertising(String url , Activity ac , WebView vc , String return_fun){
+		Log.e("SKY" , "-Advertising-- :: ");
+		String val[] = url.split(",");
+		for (int i = 0; i < val.length; i++) {
+			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
+		}
+		Intent marketLaunch = new Intent(Intent.ACTION_VIEW);
+		marketLaunch.setData(Uri.parse(val[0]));
+
+		ac.startActivity(marketLaunch);
+	}
+
+	/*
+	 * param
+	 * url :: 안씀
+	 * str :: url 주소
+	 * return :: 안씀
 	 * window.location.href = "js2ios://ImageView?url=안씀&str=url 주소&return=안씀";
 	 * */
 	public void ImageView(String url , Activity ac , WebView vc , String return_fun){
@@ -493,9 +512,10 @@ public class FunNative  {
 		for (int i = 0; i < val.length; i++) {
 			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
 		}
+
 		Intent intent = new Intent(ac , ImageViewActivity.class);
 		intent.putExtra("url", val[1]);
-		intent.putExtra("shareurl", val[2]);
+		intent.putExtra("shareurl", val[0]);
 		ac.startActivity(intent);
 	}
 
@@ -553,7 +573,7 @@ public class FunNative  {
 		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");
 		msg.putExtra(Intent.EXTRA_TEXT, val[0]);
 		//		msg.putExtra(Intent.EXTRA_TITLE, "제목");
-		msg.setType("text/plain");    
+		msg.setType("text/plain");
 		ac.startActivity(Intent.createChooser(msg, "공유"));
 
 		//MainActivity.myTTS.stop();
@@ -688,7 +708,7 @@ public class FunNative  {
 		//msg.putExtra(Intent.EXTRA_SUBJECT, "주제");
 		//msg.putExtra(Intent.EXTRA_TITLE, "제목");
 		msg.putExtra(Intent.EXTRA_TEXT, val[val.length]);
-		msg.setType("text/plain");    
+		msg.setType("text/plain");
 		ac.startActivity(Intent.createChooser(msg, "공유"));
 	}
 	/*
@@ -706,9 +726,9 @@ public class FunNative  {
 		}
 
 		//파일 있는지 유무 체크
-		String file_path = dataSet.Local_Path + val[0]; 
-		File file = new File(file_path); 
-		if( !file.exists() ){  
+		String file_path = dataSet.Local_Path + val[0];
+		File file = new File(file_path);
+		if( !file.exists() ){
 			Log.e("SKY" , "파일 없음");
 			vc.loadUrl("javascript:"+return_fun + "('false')");
 			return;
@@ -789,7 +809,7 @@ public class FunNative  {
 			catch (SQLException se) {
 				// TODO: handle exception
 				Log.e("selectData()Error! : ","selectData + " +se.toString());
-			}   
+			}
 			return "";
 
 		}
@@ -863,7 +883,7 @@ public class FunNative  {
 		catch (SQLException se) {
 			// TODO: handle exception
 			Log.e("selectData()Error! : ",se.toString());
-		}   
+		}
 
 
 		String sendMsg = jArr.toString();
@@ -887,15 +907,15 @@ public class FunNative  {
 			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
 		}
 
-		String file_path = dataSet.Local_Path + val[0]; 
-		File file = new File(file_path); 
+		String file_path = dataSet.Local_Path + val[0];
+		File file = new File(file_path);
 		if( file.exists() ){  // 원하는 경로에 폴더가 있는지 확인
 			Log.e("SKY" , "파일 있음");
 			vc.loadUrl("javascript:"+return_fun + "('true')");
 			return;
 		}
 
-		File file1 = new File(dataSet.Local_Path); 
+		File file1 = new File(dataSet.Local_Path);
 
 
 		if (file1.exists()) {
@@ -954,7 +974,7 @@ public class FunNative  {
 
 				//				String DEFAULT_FILE_PATH1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Bible";
 				String dirPath = dataSet.Local_Path;
-				File file = new File(dirPath); 
+				File file = new File(dirPath);
 				if( !file.exists() ){  // 원하는 경로에 폴더가 있는지 확인
 					Log.e("SKY" , "폴더 생성");
 					file.mkdirs();

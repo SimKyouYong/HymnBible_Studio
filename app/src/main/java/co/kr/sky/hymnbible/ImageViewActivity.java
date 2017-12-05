@@ -127,11 +127,11 @@ public class ImageViewActivity extends Activity{
 
 						break;
 					case R.id.share:
+						String message = "은혜로운 말씀카드가 도착했습니다. 말씀카드 보기 " + getIntent().getStringExtra("shareurl")+ " 무료 성경과 찬송반주 어플 성경과찬송뉴";
 						Intent msg = new Intent(Intent.ACTION_SEND);
 						msg.addCategory(Intent.CATEGORY_DEFAULT);
 						msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");
-						msg.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra("shareurl"));
-						//		msg.putExtra(Intent.EXTRA_TITLE, "제목");
+						msg.putExtra(Intent.EXTRA_TEXT, message);
 						msg.setType("text/plain");
 						startActivity(Intent.createChooser(msg, "공유"));
 						break;

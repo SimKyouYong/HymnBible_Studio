@@ -272,7 +272,8 @@ public class MainActivity extends Activity{
 					}else{
 						map.clear();
 						map.put("url", dataSet.SERVER+"json/updateRegid.do");
-						map.put("phone",dataSet.PHONE);
+                        map.put("device_key",dataSet.DEVICE_KEY);
+                        map.put("phone",dataSet.PHONE);
 						map.put("reg_id",Check_Preferences.getAppPreferences(getApplicationContext() , "REG_ID" ));
 
 
@@ -576,7 +577,7 @@ public class MainActivity extends Activity{
 			}
 
 		});
-		Log.e("SKY" , "URL :: "  + DEFINE.SERVER_WEB_URL+dataSet.PHONE);
+		Log.e("SKY" , "URL :: "  + DEFINE.SERVER_WEB_URL+"key=" + dataSet.DEVICE_KEY+ "&phone=" + dataSet.PHONE);
 		Real_exit = true;
 		BibleWeb.loadUrl(DEFINE.SERVER_WEB_URL+"key=" + dataSet.DEVICE_KEY+ "&phone=" + dataSet.PHONE);
 		if(Build.VERSION.SDK_INT >= 11)

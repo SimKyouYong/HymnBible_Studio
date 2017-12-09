@@ -72,7 +72,7 @@ public class IntroActivity extends Activity {
 		}else{
 			// 권한 있음
 			Log.e("SKY", "권한 있음");
-			mHandler.postDelayed(r, 2000);
+			mHandler.postDelayed(r, 1000);
 		}
 
 	}
@@ -86,14 +86,14 @@ public class IntroActivity extends Activity {
 				Log.e("SKY" , "성공");
 				Log.e("SKY" , "permissions SIZE :: " + permissions.length);
 				if (permissions.length == 6) {
-					mHandler.postDelayed(r, 2000);
+					mHandler.postDelayed(r, 1000);
 				}else{
 					AlertDialog.Builder alert = new AlertDialog.Builder(IntroActivity.this, AlertDialog.THEME_HOLO_LIGHT);
 					alert.setTitle("알림");
 					alert.setMessage("이앱은 모두 허용하여야만 사용이 가능한 어플리케이션 입니다.\n다시 이앱에 대한 권한을 설정하기 위해서 '설정/애플리케이션관리자/성경찬송/권한' 으로 이동하여 모두 허용으로 변경해주세요.");
 					alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int whichButton) {
-							mHandler.postDelayed(r, 2000);
+							mHandler.postDelayed(r, 1000);
 						}
 					});
 					/*

@@ -165,6 +165,28 @@ public class MainActivity extends Activity{
 	private HashMap<String, Integer> group_count;
 	public static int ffasdfasdf = 0;
 	@Override
+	protected void onPause() {
+		super.onPause();
+		if (myTTS != null) {
+			if(myTTS.isSpeaking()) {
+				myTTS.stop();
+			}
+		}
+	}
+
+	@Override
+	public void onDestroy() {
+		if (myTTS != null) {
+			if(myTTS.isSpeaking()) {
+				myTTS.stop();
+			}
+			myTTS.shutdown();
+		}
+		super.onDestroy();
+	}
+
+
+	@Override
 	public void onResume(){
 		super.onResume();
 		if (ffasdfasdf == 1){
@@ -186,6 +208,10 @@ public class MainActivity extends Activity{
 		vc = new MySQLiteOpenHelper(this);
 		bottomview = (LinearLayout)findViewById(R.id.bottomview);
 		bottomview.setVisibility(View.GONE);
+
+
+
+
 
 		TelephonyManager telManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);// 사용자 전화번호로 ID값 가져옴
 		try {
@@ -225,7 +251,12 @@ public class MainActivity extends Activity{
 		group_title=new HashMap<String, String>();
 		group_count=new HashMap<String, Integer>();
 		//getGroupContacts();
+		if (Check_Preferences.getAppPreferences(this, "rate").equals("")){
+			Check_Preferences.setAppPreferences(this, "rate", "0.6");
+			float rate = (float) 0.6;
+			myTTS.setSpeechRate(rate);
 
+		}
 
 
 	}

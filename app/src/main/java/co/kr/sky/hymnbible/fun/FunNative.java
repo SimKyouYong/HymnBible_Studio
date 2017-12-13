@@ -68,6 +68,44 @@ public class FunNative  {
 
 	private WebView Webview_copy;
 
+
+	public void getSpeechRate(String url , final Activity ac , WebView vc , String return_fun){
+		Log.e("SKY" , "-getSpeechRate-- :: ");
+
+		Log.e("SKY", "javascript:"+return_fun + "('" +Check_Preferences.getAppPreferenceson(ac, "rate") + "')");
+		vc.loadUrl("javascript:"+return_fun + "('" +Check_Preferences.getAppPreferenceson(ac, "rate") + "')");
+		//vc.loadUrl("javascript:"+"DevInfoReturn" + "('" +verSion + "')");
+
+	}
+	public void setSpeechRate(String url , final Activity ac , WebView vc , String return_fun){
+		Log.e("SKY" , "-setSpeechRate-- :: ");
+		String val[] = url.split(",");
+		for (int i = 0; i < val.length; i++) {
+			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
+		}
+		float rate = Float.parseFloat(val[0]);
+		Check_Preferences.setAppPreferences(ac, "rate", val[0]);
+		if(val[0].equals("0.2")){
+			//0.2
+			MainActivity.myTTS.setSpeechRate(rate);
+		}else if(val[0].equals("0.4")){
+			//0.4
+			MainActivity.myTTS.setSpeechRate(rate);
+		}else if(val[0].equals("0.6")){
+			//0.6
+			MainActivity.myTTS.setSpeechRate(rate);
+		}else if(val[0].equals("0.8")){
+			//0.8
+			MainActivity.myTTS.setSpeechRate(rate);
+		}else if(val[0].equals("1")){
+			//1
+			MainActivity.myTTS.setSpeechRate(rate);
+		}
+
+
+	}
+
+
 	/*
 	* window.location.href = "js2ios://GetVersion?url=안씀&str=안씀&return=리턴함수";
 	* */
@@ -613,6 +651,10 @@ public class FunNative  {
 			word = new String(word.getBytes("x-windows-949"), "ksc5601");
 			word = word.replace("0", "").replace("1", "").replace("2", "").replace("3", "").replace("4", "")
 					.replace("5", "").replace("6", "").replace("7", "").replace("8", "").replace("9", "").replace(".", "");
+
+			String vv = Check_Preferences.getAppPreferences(ac, "rate");
+			float rate = Float.parseFloat(vv);
+			MainActivity.myTTS.setSpeechRate(rate);
 
 
 			MainActivity.myTTS.speak(word, TextToSpeech.QUEUE_FLUSH, null);

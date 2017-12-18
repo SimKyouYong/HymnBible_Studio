@@ -139,27 +139,53 @@ public class FunNative  {
 			Log.e("SKY" , "VAL["+i + "]  :: " + i + " --> " + val[i]);
 		}
 		String filename[] = val[0].split("/");
-		Date d = new Date();
-		String s = d.toString();
-		System.out.println("현재날짜 : "+ s);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		System.out.println("현재날짜 : "+ sdf.format(d));
-		String date = sdf.format(d);
-		Uri source = Uri.parse(DEFINE.SERVER_URL + val[0]);
-		// Make a new request pointing to the .apk url
-		DownloadManager.Request request = new DownloadManager.Request(source);
-		// appears the same in Notification bar while downloading
-		request.setDescription("Description for the DownloadManager Bar");
-		request.setTitle(filename[filename.length-1]);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			request.allowScanningByMediaScanner();
-			request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+		if(filename[filename.length].equals(".xls")){
+			//엑셀 다운로드
+			Date d = new Date();
+			String s = d.toString();
+			System.out.println("현재날짜 : "+ s);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			System.out.println("현재날짜 : "+ sdf.format(d));
+			String date = sdf.format(d);
+			Uri source = Uri.parse(DEFINE.SERVER_URL + val[0]);
+			// Make a new request pointing to the .apk url
+			DownloadManager.Request request = new DownloadManager.Request(source);
+			// appears the same in Notification bar while downloading
+			request.setDescription("Description for the DownloadManager Bar");
+			request.setTitle(filename[filename.length-1]);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+				request.allowScanningByMediaScanner();
+				request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+			}
+			// save the file in the "Downloads" folder of SDCARD
+			request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "event_" + date  +  ".xls");
+			// get download service and enqueue file
+			DownloadManager manager = (DownloadManager) ac.getSystemService(Context.DOWNLOAD_SERVICE);
+			manager.enqueue(request);
+		}else{
+			Date d = new Date();
+			String s = d.toString();
+			System.out.println("현재날짜 : "+ s);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			System.out.println("현재날짜 : "+ sdf.format(d));
+			String date = sdf.format(d);
+			Uri source = Uri.parse(DEFINE.SERVER_URL + val[0]);
+			// Make a new request pointing to the .apk url
+			DownloadManager.Request request = new DownloadManager.Request(source);
+			// appears the same in Notification bar while downloading
+			request.setDescription("Description for the DownloadManager Bar");
+			request.setTitle(filename[filename.length-1]);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+				request.allowScanningByMediaScanner();
+				request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+			}
+			// save the file in the "Downloads" folder of SDCARD
+			request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "file_" + date  +  filename[filename.length]);
+			// get download service and enqueue file
+			DownloadManager manager = (DownloadManager) ac.getSystemService(Context.DOWNLOAD_SERVICE);
+			manager.enqueue(request);
 		}
-		// save the file in the "Downloads" folder of SDCARD
-		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "event_" + date  +  ".xls");
-		// get download service and enqueue file
-		DownloadManager manager = (DownloadManager) ac.getSystemService(Context.DOWNLOAD_SERVICE);
-		manager.enqueue(request);
+
 	}
 
 	/*

@@ -134,7 +134,8 @@ public class ImageViewActivity extends Activity{
 
 						break;
 					case R.id.share:
-						String message = "은혜로운 말씀카드가 도착했습니다. 말씀카드 보기 " + getIntent().getStringExtra("shareurl")+ " 무료 성경과 찬송반주 어플 성경과찬송뉴";
+						//String message = "은혜로운 말씀카드가 도착했습니다. 말씀카드 보기 " + getIntent().getStringExtra("shareurl")+ " 무료 성경과 찬송반주 어플 성경과찬송뉴";
+						String message = "성경과찬송뉴로부터\n은혜로운 말씀카드와 QT가\n도착했습니다.\n\n"+getIntent().getStringExtra("shareurl")+"\n\n대한미국 기독교 대표앱\n찬양전곡 리얼반주MR 과\n4성부 파트, 노래 악보등\n찬양의 모든것제공\n아이폰및 안드로이드\n앱스토어에서 '성경과찬송뉴'\n검색 설치해보세요";
 						Intent msg = new Intent(Intent.ACTION_SEND);
 						msg.addCategory(Intent.CATEGORY_DEFAULT);
 						msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");

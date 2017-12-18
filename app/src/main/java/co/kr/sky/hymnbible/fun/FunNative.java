@@ -101,7 +101,8 @@ public class FunNative  {
 			//1
 			MainActivity.myTTS.setSpeechRate(rate);
 		}
-
+        Log.e("SKY", "javascript:"+return_fun + "('" +Check_Preferences.getAppPreferenceson(ac, "rate") + "')");
+        vc.loadUrl("javascript:"+return_fun + "('" +Check_Preferences.getAppPreferenceson(ac, "rate") + "')");
 
 	}
 
@@ -203,8 +204,9 @@ public class FunNative  {
 		Log.e("SKY" , "-AppShare-- :: ");
 		Intent msg = new Intent(Intent.ACTION_SEND);
 		msg.addCategory(Intent.CATEGORY_DEFAULT);
-		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");
-		msg.putExtra(Intent.EXTRA_TEXT, "무료 “성경과찬송-뉴”\n본앱은 찬양 선교를 위해 중점을\n두고 만들어진 서비스입니다.\n찬송가 645전곡 반주제공, 무료문자\n성경과찬송-뉴, 교회찾기 기능등\n\n▶구글스토어 바로가기\nhttps://play.google.com/store/apps/details?id=co.kr.sky.hymnbible\n\n▶애플스토어 바로가기\nhttps://appsto.re/kr/ptiAjb.i\n\n※ 기능안내 ※\n▶찬송가 전곡 반주제공\n    전문 연주자가 직접 연주 녹음\n    예배의 품격을 높여줍니다.\n    4부(소.엘.테.베) 멜로디지원\n▶무료 문자발송(단.장문)\n   교회&단체,영업등 성도.고객관리로\n   한번에 500명까지 발송가능\n▶성경 : 관주 특화기능\n▶교회찾기 서비스\n▶경조사 금전관리\n\n아이폰.안드로이드 앱스토어에서\n'성경과찬송뉴'를 검색");
+		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송뉴");
+		msg.putExtra(Intent.EXTRA_TEXT, "대한민국 최고의 기독교앱\n성경.찬송반주.4성부.QT.문자\n[무료어플] '성경과찬송뉴'\n\n※기능안내※\n▶성경- 한,중,미 3개국\n▶찬송- 전곡 리얼반주MR\n  다양한 예배에서 \n  찬양 반주로 이용가능\n  4성부 찬송 파트연습\n  노래.악보등 찬송의 모든것\n▶말씀QT - 아름다운 카드와\n  말씀을 묵상하도록 도와드립니다\n▶무료문자 - 교회 애경사 및 단체문자 발송\n▶교회등록 및 찾기 - 전국교회 찾기와 교회 홍보하기\n▶경조사관리 - 각종 경조사 금전관리\n\n아이폰과 안드로이드 모두 가능하며 \n앱스토어에서 '성경과찬송뉴' 검색\n\n▶구글스토어 바로가기\nhttps://play.google.com/store/apps/details?id=co.kr.sky.hymnbible\n\n▶애플스토어 바로가기\nhttps://appsto.re/kr/ptiAjb.i\n\n혹 설치에 어려운 분이 있으시면 네이버 블로그 주소입니다 참조해주세요\nhttp://blog.naver.com/sharp5200/221047525457");
+		//msg.putExtra(Intent.EXTRA_TEXT, "무료 “성경과찬송-뉴”\n본앱은 찬양 선교를 위해 중점을\n두고 만들어진 서비스입니다.\n찬송가 645전곡 반주제공, 무료문자\n성경과찬송-뉴, 교회찾기 기능등\n\n▶구글스토어 바로가기\nhttps://play.google.com/store/apps/details?id=co.kr.sky.hymnbible\n\n▶애플스토어 바로가기\nhttps://appsto.re/kr/ptiAjb.i\n\n※ 기능안내 ※\n▶찬송가 전곡 반주제공\n    전문 연주자가 직접 연주 녹음\n    예배의 품격을 높여줍니다.\n    4부(소.엘.테.베) 멜로디지원\n▶무료 문자발송(단.장문)\n   교회&단체,영업등 성도.고객관리로\n   한번에 500명까지 발송가능\n▶성경 : 관주 특화기능\n▶교회찾기 서비스\n▶경조사 금전관리\n\n아이폰.안드로이드 앱스토어에서\n'성경과찬송뉴'를 검색");
 		//		msg.putExtra(Intent.EXTRA_TITLE, "제목");
 		msg.setType("text/plain");
 		ac.startActivity(Intent.createChooser(msg, "공유"));
@@ -608,8 +610,16 @@ public class FunNative  {
 
 		Intent msg = new Intent(Intent.ACTION_SEND);
 		msg.addCategory(Intent.CATEGORY_DEFAULT);
-		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송-뉴");
-		msg.putExtra(Intent.EXTRA_TEXT, val[0]);
+		msg.putExtra(Intent.EXTRA_SUBJECT, "성경과찬송뉴");
+		String val_str = "";
+
+		if (!val[0].equals("not")){
+			val_str = val_str + val[0];
+		}
+		if (!val[1].equals("not")){
+			val_str = val_str + val[1];
+		}
+		msg.putExtra(Intent.EXTRA_TEXT, val_str);
 		//		msg.putExtra(Intent.EXTRA_TITLE, "제목");
 		msg.setType("text/plain");
 		ac.startActivity(Intent.createChooser(msg, "공유"));

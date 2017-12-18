@@ -482,7 +482,7 @@ public class ChurchSearch extends Activity
     public void onMapReady(final GoogleMap map) {
         mMap = map;
 
-        LatLng SEOUL = new LatLng(37.56, 126.97);
+        LatLng SEOUL = new LatLng(36.397955, 127.784735);
 
         /*
         MarkerOptions markerOptions = new MarkerOptions();
@@ -493,7 +493,7 @@ public class ChurchSearch extends Activity
 
         */
         map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
-        map.animateCamera(CameraUpdateFactory.zoomTo(5));
+        map.animateCamera(CameraUpdateFactory.zoomTo(7));
     }
 
 

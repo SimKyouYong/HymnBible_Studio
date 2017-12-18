@@ -21,7 +21,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="성경과찬송-뉴" >
+        android:label="성경과찬송뉴" >
         <uses-library android:name="com.google.android.maps" />
 
         <!--개발-->

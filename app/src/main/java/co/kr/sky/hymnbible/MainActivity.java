@@ -678,14 +678,7 @@ public class MainActivity extends Activity{
 
 			myTTS.stop();
 
-			if (url.matches(".*http://shqrp5200.cafe24.com/index.do.*")) {
-				//메인 페이지이기에 종료하기 띄운다!.
-				Real_exit = true;
-				Log.e("SKY", "set Real_exit = = = = = = = "+Real_exit);
-			}else{
-				Real_exit = false;
-				Log.e("SKY", "set Real_exit = = = = = = = "+Real_exit);
-			}
+
 
 			if( url.startsWith("http:") || url.startsWith("https:") ) {
 				return false;
@@ -774,6 +767,16 @@ public class MainActivity extends Activity{
 			//BibleWeb.loadUrl(ht);
 			url_copy_progress = url;
 			Log.e("SKY", "onPageFinished = = = = = = = "+url);
+
+            if (url.matches(".*index.do.*")) {
+                //메인 페이지이기에 종료하기 띄운다!.
+                Real_exit = true;
+                Log.e("SKY", "set Real_exit = = = = = = = "+Real_exit);
+            }else{
+                Real_exit = false;
+                Log.e("SKY", "set Real_exit = = = = = = = "+Real_exit);
+            }
+
 			customProgressClose();
 			//하단 bottomView visible
 			if (url.matches("http://sharp5200.cafe24.com/bible/bible_view.do.*") ||
@@ -990,7 +993,7 @@ public class MainActivity extends Activity{
 			return true;
 		}
 		 */
-		if ((keyCode == KeyEvent.KEYCODE_BACK) && BibleWeb.canGoBack()) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 			if (Real_exit) {
 				EXIT();
 				return true;
